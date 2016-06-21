@@ -32,8 +32,5 @@ public/vendor
 # TSD typings
 typings
 
-# sensitive data
-secrets.json
-
-#bower install folder
-public/vendor
+!systemjs.config.js
+!typings/typings.d.ts
