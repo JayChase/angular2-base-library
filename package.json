@@ -6,7 +6,8 @@
     "test": "test"
   },
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server -c bs-config.json\" ",
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server -c bs-config.json\"",
+    "code": "tsc && concurrently \"tsc -w\" \"lite-server -c bs-config.json\" \"karma start karma.conf.js\"",
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "lint": "tslint ./app/**/*.ts -t verbose",
     "lite": "lite-server -c bs-config.json",
