@@ -6,10 +6,10 @@
     "test": "test"
   },
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server -c bs-config.json\" ",
     "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
     "lint": "tslint ./app/**/*.ts -t verbose",
-    "lite": "lite-server",
+    "lite": "lite-server -c bs-config.json",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "typings": "typings"
