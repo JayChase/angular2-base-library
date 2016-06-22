@@ -6,7 +6,7 @@
 
   // map tells the System loader where to look for things
   var map = {
-    'app': 'app', // 'dist',
+    'demo': 'demo', // 'dist',
 
     '@angular': 'node_modules/@angular',
     'rxjs': 'node_modules/rxjs',
@@ -16,7 +16,7 @@
 
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
-    'app': { main: 'main.js', defaultExtension: 'js' },
+    'demo': { main: 'main.js', defaultExtension: 'js' },
     'rxjs': { defaultExtension: 'js' },
     '@angular2-material/core': { format: 'cjs', defaultExtension: 'js', main: 'core.js' },
     '@angular2-material/toolbar': { format: 'cjs', defaultExtension: 'js', main: 'toolbar.js' },
