@@ -31,15 +31,6 @@ System.config({
 
 var packages = {
     'demo': { main: 'main.js', defaultExtension: 'js' },
-    '@angular2-material/core': { defaultExtension: 'js', main: 'core.js' },
-    '@angular2-material/toolbar': { defaultExtension: 'js', main: 'toolbar.js' },
-    '@angular2-material/sidenav': { defaultExtension: 'js', main: 'sidenav.js' },
-    '@angular2-material/list': { defaultExtension: 'js', main: 'list.js' },
-    '@angular2-material/progress-circle': { defaultExtension: 'js', main: 'progress-circle.js' },
-    '@angular2-material/card': { defaultExtension: 'js', main: 'card.js' },
-    '@angular2-material/button': { defaultExtension: 'js', main: 'button.js' },
-    '@angular2-material/icon': { defaultExtension: 'js', main: 'icon.js' },
-    '@angular2-material/input': { defaultExtension: 'js', main: 'input.js' },
     'rxjs': { defaultExtension: 'js' }
 };
 
@@ -69,7 +60,6 @@ System.config(
         map: {
             'rxjs': 'node_modules/rxjs',
             '@angular': 'node_modules/@angular',
-            '@angular2-material': 'node_modules/@angular2-material',
             'demo': 'demo'
         },
         packages: packages
