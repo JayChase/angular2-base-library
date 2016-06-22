@@ -9,26 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var demo_component_1 = require('./demo.component');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Demo app';
-        this.description = 'Demo the library here by adding using the demo component. Separated from app to make unit testing easier.';
+var DemoComponent = (function () {
+    function DemoComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () {
-    };
-    AppComponent = __decorate([
+    DemoComponent.prototype.ngOnInit = function () { };
+    DemoComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'demo-app',
-            templateUrl: 'app.component.html',
-            styleUrls: ['app.component.css'],
+            selector: 'demo',
+            templateUrl: 'demo.component.html',
+            styleUrls: ['demo.component.css'],
             providers: [],
-            directives: [demo_component_1.DemoComponent]
+            directives: []
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], DemoComponent);
+    return DemoComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.DemoComponent = DemoComponent;
+//# sourceMappingURL=demo.component.js.map

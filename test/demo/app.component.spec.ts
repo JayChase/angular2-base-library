@@ -21,13 +21,24 @@ describe('App component', () => {
                 .then((fixture: ComponentFixture<AppComponent>) => {
                     fixture.detectChanges();
 
-                    //set the title
-                    //fixture.debugElement.componentInstance.greeting = 'test';
+                    expect(fixture).not.toBeNull();
+                });
+        })
+    );
 
-                    //fixture.detectChanges();
+        it('should set the title',
+        injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+            tcb.createAsync(AppComponent)
+                .then((fixture: ComponentFixture<AppComponent>) => {
+                    fixture.detectChanges();
+
+                    //set the title
+                    fixture.debugElement.componentInstance.title= 'test-title';
+
+                    fixture.detectChanges();
 
                     //check the title heading is test-title                        
-                    expect(fixture).not.toBeNull();
+                    expect(fixture.debugElement.nativeElement.querySelector('.component-title')).toHaveText('test-title');
                 });
         })
     );

@@ -7,11 +7,18 @@ testing_2.describe('App component', function () {
         tcb.createAsync(app_component_1.AppComponent)
             .then(function (fixture) {
             fixture.detectChanges();
-            //set the title
-            //fixture.debugElement.componentInstance.greeting = 'test';
-            //fixture.detectChanges();
-            //check the title heading is test-title                        
             testing_2.expect(fixture).not.toBeNull();
+        });
+    }));
+    testing_2.it('should set the title', testing_2.injectAsync([testing_1.TestComponentBuilder], function (tcb) {
+        tcb.createAsync(app_component_1.AppComponent)
+            .then(function (fixture) {
+            fixture.detectChanges();
+            //set the title
+            fixture.debugElement.componentInstance.title = 'test-title';
+            fixture.detectChanges();
+            //check the title heading is test-title                        
+            testing_2.expect(fixture.debugElement.nativeElement.querySelector('.component-title')).toHaveText('test-title');
         });
     }));
 });
