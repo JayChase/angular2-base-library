@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'Demo app';
+        this.description = 'Demo the library here by adding using the demo component.';
     }
     AppComponent.prototype.ngOnInit = function () {
     };

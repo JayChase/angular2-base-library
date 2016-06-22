@@ -12,6 +12,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 
 export class AppComponent implements OnInit {
   title: string = 'Demo app';
+  description: string = 'Demo the library here by adding using the demo component.';
 
   constructor() {
 

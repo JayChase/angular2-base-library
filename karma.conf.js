@@ -37,17 +37,19 @@ module.exports = function (config) {
       { pattern: 'node_modules/@angular2-material/**/*.js', included: false, watched: true },
       { pattern: 'node_modules/@angular2-material/**/*.js.map', included: false, watched: true },
 
-      // built application code
+      //application code
       { pattern: 'src/**/*.js', included: false, watched: true },
-
-      // paths loaded via Angular's component compiler
-      // (these paths need to be rewritten, see proxies section)
       { pattern: 'src/**/*.html', included: false, watched: true },
       { pattern: 'src/**/*.css', included: false, watched: true },
-
-      // paths to support debugging with source maps in dev tools
       { pattern: 'src/**/*.ts', included: false, watched: false },
       { pattern: 'src/**/*.js.map', included: false, watched: false },
+
+      //demo code
+      { pattern: 'demo/**/*.js', included: false, watched: true },
+      { pattern: 'demo/**/*.html', included: false, watched: true },
+      { pattern: 'demo/**/*.css', included: false, watched: true },
+      { pattern: 'demo/**/*.ts', included: false, watched: false },
+      { pattern: 'demo/**/*.js.map', included: false, watched: false },
 
       //path to the tests
       { pattern: 'test/**/*.js', included: false, watched: true },
@@ -56,8 +58,9 @@ module.exports = function (config) {
     ],
 
     // proxied base paths make sure the template and css urls get redirected to /base/...
-    proxies: {      
-      "/src/": "/base/src/"
+    proxies: {
+      "/src/": "/base/src/",
+      "/demo/": "/base/demo/"
     },
 
     reporters: ['verbose'],

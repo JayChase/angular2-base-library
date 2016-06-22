@@ -12,12 +12,11 @@ function isJsFile(path) {
 
 function isSpecFile(path) {
     //return path.slice(-8) == '_test.js' || path.slice(-8) == '.spec.js';
-    return path.indexOf('/base/test/') > -1;
+    return path.indexOf('/test/') > -1;
 }
 
 function isBuiltFile(path) {
-    var builtPath = '/app/';
-    return isJsFile(path) && (path.substr(0, builtPath.length) == builtPath);
+    return isJsFile(path) && ((path.substr(0, builtPath.length) == '/base/demo/') || (path.substr(0, builtPath.length) == '/base/src/') );
 }
 
 //change here as we keep spec.js in test folder
@@ -31,7 +30,7 @@ System.config({
 });
 
 var packages = {
-    'app': { main: 'main.js', defaultExtension: 'js' },
+    'demo': { main: 'main.js', defaultExtension: 'js' },
     '@angular2-material/core': { defaultExtension: 'js', main: 'core.js' },
     '@angular2-material/toolbar': { defaultExtension: 'js', main: 'toolbar.js' },
     '@angular2-material/sidenav': { defaultExtension: 'js', main: 'sidenav.js' },
@@ -71,8 +70,7 @@ System.config(
             'rxjs': 'node_modules/rxjs',
             '@angular': 'node_modules/@angular',
             '@angular2-material': 'node_modules/@angular2-material',
-            'sinon': 'node_modules/karma-sinon',
-            'app': 'app'
+            'demo': 'demo'
         },
         packages: packages
     });
