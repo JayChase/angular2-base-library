@@ -7,7 +7,7 @@ module.exports = function (config) {
 
     files: [
       // Polyfills.
-      'node_modules/es6-shim/es6-shim.js',
+      'node_modules/core-js/client/shim.min.js',
 
       'node_modules/reflect-metadata/Reflect.js',
 
@@ -27,7 +27,6 @@ module.exports = function (config) {
 
 
       { pattern: 'karma-test-shim.js', included: true, watched: true },
-      { pattern: 'test/matchers.js', included: true, watched: true },
 
       // paths loaded via module imports
       // Angular itself
@@ -39,16 +38,16 @@ module.exports = function (config) {
       { pattern: 'node_modules/@angular2-material/**/*.js.map', included: false, watched: true },
 
       // built application code
-      { pattern: 'app/**/*.js', included: false, watched: true },
+      { pattern: 'src/**/*.js', included: false, watched: true },
 
       // paths loaded via Angular's component compiler
       // (these paths need to be rewritten, see proxies section)
-      { pattern: 'app/**/*.html', included: false, watched: true },
-      { pattern: 'app/**/*.css', included: false, watched: true },
+      { pattern: 'src/**/*.html', included: false, watched: true },
+      { pattern: 'src/**/*.css', included: false, watched: true },
 
       // paths to support debugging with source maps in dev tools
-      { pattern: 'app/**/*.ts', included: false, watched: false },
-      { pattern: 'app/**/*.js.map', included: false, watched: false },
+      { pattern: 'src/**/*.ts', included: false, watched: false },
+      { pattern: 'src/**/*.js.map', included: false, watched: false },
 
       //path to the tests
       { pattern: 'test/**/*.js', included: false, watched: true },
@@ -58,7 +57,7 @@ module.exports = function (config) {
 
     // proxied base paths make sure the template and css urls get redirected to /base/...
     proxies: {      
-      "/app/": "/base/app/"
+      "/src/": "/base/src/"
     },
 
     reporters: ['verbose'],
