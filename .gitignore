@@ -33,4 +33,3 @@ public/vendor
 typings
 
 !systemjs.config.js
-!typings/typings.d.ts
