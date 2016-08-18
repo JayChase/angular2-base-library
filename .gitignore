@@ -32,4 +32,7 @@ public/vendor
 # TSD typings
 typings
 
+#all js apart from packaged lib and system.config
+*.js
+!lib/*.js
 !systemjs.config.js
