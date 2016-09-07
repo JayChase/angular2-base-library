@@ -18,9 +18,7 @@ var DemoComponent = (function () {
             moduleId: module.id,
             selector: 'demo',
             templateUrl: 'demo.component.html',
-            styleUrls: ['demo.component.css'],
-            providers: [],
-            directives: []
+            styleUrls: ['demo.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], DemoComponent);

@@ -16,7 +16,7 @@ function isSpecFile(path) {
 }
 
 function isBuiltFile(path) {
-    return isJsFile(path) && ((path.substr(0, builtPath.length) == '/base/demo/') || (path.substr(0, builtPath.length) == '/base/src/') );
+    return isJsFile(path) && ((path.substr(0, builtPath.length) == '/base/demo/') || (path.substr(0, builtPath.length) == '/base/src/'));
 }
 
 //change here as we keep spec.js in test folder
@@ -24,56 +24,60 @@ var allSpecFiles = Object.keys(window.__karma__.files)
     .filter(isSpecFile)
     .filter(isJsFile);
 
-// Load our SystemJS configuration.
 System.config({
-    baseURL: '/base'
+    baseURL: '/base',
+    packageWithIndex: true,
 });
 
-var packages = {
-    'demo': { main: 'main.js', defaultExtension: 'js' },
-    'rxjs': { defaultExtension: 'js' }
+var config = {
+    paths: {
+        'npm:': 'node_modules/'
+    },
+    map: {
+        'demo': 'demo', // 'dist',
+
+        // angular bundles
+        '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+        '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+        '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+        '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+        '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+        '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+        '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
+        '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+
+        // angular testing umd bundles
+        '@angular/core/testing': 'npm:@angular/core/bundles/core-testing.umd.js',
+        '@angular/common/testing': 'npm:@angular/common/bundles/common-testing.umd.js',
+        '@angular/compiler/testing': 'npm:@angular/compiler/bundles/compiler-testing.umd.js',
+        '@angular/platform-browser/testing': 'npm:@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+        '@angular/platform-browser-dynamic/testing': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+        '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
+        '@angular/router/testing': 'npm:@angular/router/bundles/router-testing.umd.js',
+        '@angular/forms/testing': 'npm:@angular/forms/bundles/forms-testing.umd.js',
+
+        'rxjs': 'node_modules/rxjs',
+
+        '@angular2-material': 'node_modules/@angular2-material'
+    },
+    packages: {
+        'demo': { main: 'main.js', defaultExtension: 'js' },
+        'rxjs': { defaultExtension: 'js' }
+    }
 };
 
-var ngPackageNames = [
-    'common',
-    'compiler',
-    'core',
-    'http',
-    'platform-browser',
-    'platform-browser-dynamic',
-    'router',
-    'router-deprecated',
-    'upgrade'
-];
-
-// Add package entries for angular packages
-ngPackageNames.forEach(function (pkgName) {
-    // Bundled (~40 requests):
-    packages['@angular/' + pkgName] = { main: 'index.js', defaultExtension: 'js' };
-
-    // Individual files (~300 requests):
-    //packages['@angular/'+pkgName] = { main: 'index.js', defaultExtension: 'js' };
-});
-
-System.config(
-    {
-        map: {
-            'rxjs': 'node_modules/rxjs',
-            '@angular': 'node_modules/@angular',
-            'demo': 'demo'
-        },
-        packages: packages
-    });
+System.config(config);
 
 Promise.all([
     System.import('@angular/core/testing'),
     System.import('@angular/platform-browser-dynamic/testing')
 ]).then(function (providers) {
-    var testing = providers[0];
-    var testingBrowser = providers[1];
+    var coreTesting = providers[0];
+    var browserTesting = providers[1];
 
-    testing.setBaseTestProviders(testingBrowser.TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS,
-        testingBrowser.TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS);
+    coreTesting.TestBed.initTestEnvironment(
+        browserTesting.BrowserDynamicTestingModule,
+        browserTesting.platformBrowserDynamicTesting());
 
 }).then(function () {
     // Finally, load all spec files.

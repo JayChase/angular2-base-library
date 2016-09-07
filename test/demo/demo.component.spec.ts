@@ -1,12 +1,10 @@
-import { Component, provide } from '@angular/core';
+import { Component} from '@angular/core';
 import {
     async,
     inject,
     TestBed,
     ComponentFixture
 } from '@angular/core/testing';
-
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
 
 import {MdInput} from '@angular2-material/input';
 
@@ -16,7 +14,11 @@ import { DemoComponent } from '../../demo/demo.component';
 describe('demo component', () => {
 
     beforeEach(() => {
-        TestBed.compileComponents();
+          TestBed.configureTestingModule({
+            declarations: [
+                DemoComponent
+            ]
+        });        
     });
 
     it('should build without error', async(() => {
