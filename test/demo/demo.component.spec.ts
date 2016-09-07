@@ -1,30 +1,31 @@
-import {
-    ComponentFixture,
-    TestComponentBuilder
-} from '@angular/compiler/testing';
 import { Component, provide } from '@angular/core';
 import {
     async,
-    beforeEachProviders,
-    describe,
-    expect,
-    inject, 
-    it
+    inject,
+    TestBed,
+    ComponentFixture
 } from '@angular/core/testing';
+
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
+
+import {MdInput} from '@angular2-material/input';
 
 import { DemoComponent } from '../../demo/demo.component';
 
-describe('App component', () => {
-    it('should build without error',
-        async(
-            inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-                tcb.createAsync(DemoComponent)
-                    .then((fixture: ComponentFixture<DemoComponent>) => {
-                        fixture.detectChanges();
 
-                        expect(fixture).not.toBeNull();
-                    });
-            })
-        )
-    );
-})
+describe('demo component', () => {
+
+    beforeEach(() => {
+        TestBed.compileComponents();
+    });
+
+    it('should build without error', async(() => {
+        TestBed.compileComponents().then(() => {
+            var fixture = TestBed.createComponent(DemoComponent);
+            fixture.detectChanges();
+            var compiled = fixture.debugElement.nativeElement;
+
+            expect(compiled).not.toBeNull();
+        });
+    }));
+});

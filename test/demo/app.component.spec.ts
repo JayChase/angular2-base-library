@@ -1,49 +1,35 @@
-import {
-    ComponentFixture,
-    TestComponentBuilder
-} from '@angular/compiler/testing';
 import { Component, provide } from '@angular/core';
 import {
     async,
-    beforeEachProviders,
-    describe,
-    expect,
     inject,
-    it
+    TestBed,
+    ComponentFixture
 } from '@angular/core/testing';
 
 import { AppComponent } from '../../demo/app.component';
 
 describe('App component', () => {
-    it('should build without error',
-        async(
-            inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-                tcb.createAsync(AppComponent)
-                    .then((fixture: ComponentFixture<AppComponent>) => {
-                        fixture.detectChanges();
+    var testTemplate = '<div>TEST</div>';
 
-                        expect(fixture).not.toBeNull();
-                    });
-            })
-        )
-    );
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            declarations: [AppComponent]
+        });
+    });
 
-    it('should set the title',
-        async(
-            inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-                tcb.createAsync(AppComponent)
-                    .then((fixture: ComponentFixture<AppComponent>) => {
-                        fixture.detectChanges();
+    it('should build without error', async(() => {
+        TestBed.overrideComponent(AppComponent, {
+            set: {
+                template: testTemplate
+            }
+        });
 
-                        //set the title
-                        fixture.debugElement.componentInstance.title = 'test-title';
+        TestBed.compileComponents().then(() => {
+            var fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
+            var compiled = fixture.debugElement.nativeElement;
 
-                        fixture.detectChanges();
-
-                        //check the title heading is test-title                        
-                        expect(fixture.debugElement.nativeElement.querySelector('.component-title')).toHaveText('test-title');
-                    });
-            })
-        )
-    );
-})
+            expect(compiled).not.toBeNull();
+        });
+    }));
+});
