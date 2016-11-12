@@ -58,7 +58,7 @@ var config = {
 
         'rxjs': 'node_modules/rxjs',
 
-        '@angular2-material': 'node_modules/@angular2-material'
+        '@angular/material': 'npm:@angular/material/material.umd.js'
     },
     packages: {
         'demo': { main: 'main.js', defaultExtension: 'js' },

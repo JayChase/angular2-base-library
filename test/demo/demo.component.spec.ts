@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {
     async,
     inject,
@@ -6,7 +6,7 @@ import {
     ComponentFixture
 } from '@angular/core/testing';
 
-import {MdInput} from '@angular2-material/input';
+import { MaterialModule } from '@angular/material';
 
 import { DemoComponent } from '../../demo/demo.component';
 
@@ -14,11 +14,14 @@ import { DemoComponent } from '../../demo/demo.component';
 describe('demo component', () => {
 
     beforeEach(() => {
-          TestBed.configureTestingModule({
+        TestBed.configureTestingModule({
+            imports: [              
+                MaterialModule.forRoot()
+            ],
             declarations: [
                 DemoComponent
             ]
-        });        
+        });
     });
 
     it('should build without error', async(() => {

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var material_1 = require('@angular/material');
 var app_component_1 = require('./app.component');
 var demo_component_1 = require('./demo.component');
 var AppModule = (function () {
@@ -18,7 +19,8 @@ var AppModule = (function () {
     AppModule = __decorate([
         core_1.NgModule({
             imports: [
-                platform_browser_1.BrowserModule
+                platform_browser_1.BrowserModule,
+                material_1.MaterialModule.forRoot()
             ],
             declarations: [
                 app_component_1.AppComponent,

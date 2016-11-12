@@ -1,9 +1,13 @@
 "use strict";
 var testing_1 = require('@angular/core/testing');
+var material_1 = require('@angular/material');
 var demo_component_1 = require('../../demo/demo.component');
 describe('demo component', function () {
     beforeEach(function () {
         testing_1.TestBed.configureTestingModule({
+            imports: [
+                material_1.MaterialModule.forRoot()
+            ],
             declarations: [
                 demo_component_1.DemoComponent
             ]
