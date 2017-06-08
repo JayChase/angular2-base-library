@@ -6,7 +6,7 @@ import {
     ComponentFixture
 } from '@angular/core/testing';
 
-import { MaterialModule } from '@angular/material';
+import { MdCardModule, MdButtonModule } from '@angular/material';
 
 import { DemoComponent } from '../../demo/demo.component';
 
@@ -15,8 +15,9 @@ describe('demo component', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [              
-                MaterialModule.forRoot()
+            imports: [
+                MdCardModule,
+                MdButtonModule
             ],
             declarations: [
                 DemoComponent

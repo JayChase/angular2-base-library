@@ -1,16 +1,16 @@
-import { NgModule }       from '@angular/core';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { BrowserModule }  from '@angular/platform-browser';
+import { MdCardModule, MdButtonModule } from '@angular/material';
 
-import { MaterialModule } from '@angular/material';
-
-import { AppComponent }   from './app.component';
-import { DemoComponent }   from './demo.component';
+import { AppComponent } from './app.component';
+import { DemoComponent } from './demo.component';
 
 @NgModule({
     imports: [
         BrowserModule,
-        MaterialModule.forRoot()
+        MdCardModule,
+        MdButtonModule
     ],
     declarations: [
         AppComponent,
